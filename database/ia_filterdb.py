@@ -12,7 +12,6 @@ from marshmallow import ValidationError
 from info import *
 from utils import get_settings, save_group_settings
 from datetime import datetime, timedelta
-import logging
 import asyncio
 
 logger = logging.getLogger(__name__)
@@ -168,25 +167,35 @@ async def get_search_results(chat_id, query, file_type=None, max_results=None, o
         query = query.strip()
         if not query:
             return [], None, 0
-            
-        # This is the key change for balancing speed and flexibility
+
+        # Multi-word: use lazy-regex join to match flexible separators (fast & robust)
         if ' ' in query:
-            # For multi-word queries, allow spaces, dots, or hyphens between words.
-            words = [re.escape(word) for word in query.split()]
-            raw_pattern = r'.*'.join(words)
+            words = [re.escape(w) for w in query.split() if w.strip()]
+            if words:
+                raw_pattern = r'.*?'.join(words)
+            else:
+                raw_pattern = r'.'
+            try:
+                regex = re.compile(raw_pattern, flags=re.IGNORECASE)
+            except re.error:
+                return [], None, 0
+
+            if USE_CAPTION_FILTER:
+                filter_mongo = {"$or": [{"file_name": regex}, {"caption": regex}]}
+            else:
+                filter_mongo = {"file_name": regex}
         else:
-            # For single-word queries, use word boundaries for accuracy.
+            # SINGLE-WORD PATH: keep regex, but make it lazy and word-bound for speed.
             raw_pattern = r"\b" + re.escape(query) + r"\b"
+            try:
+                regex = re.compile(raw_pattern, flags=re.IGNORECASE)
+            except re.error:
+                return [], None, 0
 
-        try:
-            regex = re.compile(raw_pattern, flags=re.IGNORECASE)
-        except re.error:
-            return [], None, 0
-
-        if USE_CAPTION_FILTER:
-            filter_mongo = {"$or": [{"file_name": regex}, {"caption": regex}]}
-        else:
-            filter_mongo = {"file_name": regex}
+            if USE_CAPTION_FILTER:
+                filter_mongo = {"$or": [{"file_name": regex}, {"caption": regex}]}
+            else:
+                filter_mongo = {"file_name": regex}
 
     if file_type:
         filter_mongo["file_type"] = file_type
@@ -239,30 +248,38 @@ async def get_search_results(chat_id, query, file_type=None, max_results=None, o
 
 async def get_bad_files(query, file_type=None):
     query = query.strip()
+
     if not query:
         raw_pattern = '.'
     elif ' ' not in query:
-        raw_pattern = r"(\b|[\.\+\-_])" + query + r"(\b|[\.\+\-_])"
+        raw_pattern = r"(\b|[\.\+\-_])" + re.escape(query) + r"(\b|[\.\+\-_])"
     else:
-        raw_pattern = query.replace(" ", r".*[\s\.\+\-_()]")
+        # lazy regex instead of greedy
+        raw_pattern = r'.*?'.join(map(re.escape, query.split()))
+
     try:
         regex = re.compile(raw_pattern, flags=re.IGNORECASE)
-    except:
-        return []
+    except re.error:
+        return [], 0
+
     if USE_CAPTION_FILTER:
-        filter = {'$or': [{'file_name': regex}, {'caption': regex}]}
+        filter_mongo = {'$or': [{'file_name': regex}, {'caption': regex}]}
     else:
-        filter = {'file_name': regex}
+        filter_mongo = {'file_name': regex}
+
     if file_type:
-        filter['file_type'] = file_type
-    cursor1 = Media.find(filter).sort('$natural', -1)
-    files1 = await cursor1.to_list(length=(await Media.count_documents(filter)))
+        filter_mongo['file_type'] = file_type
+
+    cursor1 = Media.find(filter_mongo).sort('$natural', -1)
+    files1 = await cursor1.to_list(length=(await Media.count_documents(filter_mongo)))
+
     if MULTIPLE_DB:
-        cursor2 = Media2.find(filter).sort('$natural', -1)
-        files2 = await cursor2.to_list(length=(await Media2.count_documents(filter)))
+        cursor2 = Media2.find(filter_mongo).sort('$natural', -1)
+        files2 = await cursor2.to_list(length=(await Media2.count_documents(filter_mongo)))
         files = files1 + files2
     else:
         files = files1
+
     total_results = len(files)
     return files, total_results
 
