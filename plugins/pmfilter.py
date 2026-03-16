@@ -1783,9 +1783,8 @@ async def auto_filter(client, msg, spoll=False):
                 search = re.sub(r"\s+", " ", search).strip()
                 files, offset, total_results = await get_search_results(message.chat.id, search, offset=0, filter=True)
                 settings = await get_settings(message.chat.id)
-                # Force button mode in private chats
                 if message.chat.type == enums.ChatType.PRIVATE:
-                settings['button'] = True
+                    settings['button'] = True   # <-- indented under if
                 if not files:
                     if settings.get("spell_check"):
                         ai_sts = await m.edit('🤖 ᴘʟᴇᴀꜱᴇ ᴡᴀɪᴛ, ᴀɪ ɪꜱ ᴄʜᴇᴄᴋɪɴɢ ʏᴏᴜʀ ꜱᴘᴇʟʟɪɴɢ...')
