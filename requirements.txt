@@ -33,6 +33,10 @@ pyshorteners
 colorama
 fuzzywuzzy
 python-Levenshtein==0.27.1
+beautifulsoup4==4.12.3
+num2words
+telegraph==2.2.0
+countryinfo
 
 # Git-based Packages
 https://github.com/NBBotz/IMDBKit/archive/refs/heads/main.zip
