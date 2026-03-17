@@ -17,13 +17,6 @@
 <!-- > ## ⚠ <u>Under Maintenance</u> ⚠  
 > This repository is currently under maintenance. Please **DO NOT deploy** until further notice. -->
 
-## 🚀 Demo Bot
-
-
-Try the live bot here:
-
-[![Click Here](https://img.shields.io/badge/Demo%20Bot-Click%20Here-blue?style=flat&logo=telegram&labelColor=white)](https://t.me/Princess_V4_bot)
-
 ---
 
 ## 🔔 New Version Released – V1.4
@@ -45,14 +38,14 @@ Try the live bot here:
 
 ---
 
-## 🛠 Need Help Deploying?
+## 🚀 Quick Deployment
+Choose your preferred platform to get started instantly:
 
-Join our support group for assistance:
-
-[![Join Support Group](https://img.shields.io/badge/Join%20Support%20Group-Click%20Here-blue?style=flat&logo=telegram&labelColor=white)](https://t.me/Deendayal_Support_Group)
+| Koyeb | Heroku | Render |
+|:---:|:---:|:---:|
+| [![Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/The-MoonTg-project/Moon-Userbot&branch=main&name=moonub) | [![Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/The-MoonTg-project/moonub-cloud) | [![Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/The-MoonTg-project/Moon-Userbot) |
 
 ---
-
 ## 🌟 Features
 - ✅ Double db support 
 - ✅ Stream Mode Toggle  
