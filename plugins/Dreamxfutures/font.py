@@ -1,8 +1,7 @@
 import os
-from plugins.Extraxeon.fotnt_string import Fonts
+from plugins.Dreamxfutures.fotnt_string import Fonts
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-
 
 @Client.on_message(filters.private & filters.command(["font"]))
 async def style_buttons(c, m, cb=False):
