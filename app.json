@@ -15,8 +15,8 @@
       "index",
       "inline"
     ],
-    "website": "https://github.com/DreamXBotz/Auto_Filter_Bot.git",
-    "repository": "https://github.com/DreamXBotz/Auto_Filter_Bot.git",
+    "website": "https://github.com/MrYKTG/Yestm.git",
+    "repository": "https://github.com/MrYKTG/Yestm.git",
     "env": {
         "BOT_TOKEN": {
             "description": "Your bot token.",
