@@ -1453,6 +1453,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     elif query.data == "start":
         buttons = [[
+                    InlineKeyboardButton(text="★", callback_data="start"),
+                    InlineKeyboardButton(text="★", callback_data="topsearch"),
+                    InlineKeyboardButton(text="★", callback_data="about"),
+                    InlineKeyboardButton(text="★", callback_data="premium_info"),
+                    InlineKeyboardButton(text="★", callback_data="help"),
                     InlineKeyboardButton('🔰 ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ 🔰', url=f'http://telegram.me/{temp.U_NAME}?startgroup=true')
                 ],[
                     InlineKeyboardButton(' ʜᴇʟᴘ 📢', callback_data='help'),
@@ -1515,11 +1520,60 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     elif query.data == "help":
         buttons = [[
-            InlineKeyboardButton('⇋ ʙᴀᴄᴋ ᴛᴏ ʜᴏᴍᴇ ⇋', callback_data='start')
+                    InlineKeyboardButton('Features', callback_data='features'),
+                    InlineKeyboardButton('Settings', callback_data='upi')
+                ],[
+                    InlineKeyboardButton('Earn', callback_data='earn'),
+                    InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='start')
+                ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await client.edit_message_media(
+            query.message.chat.id, 
+            query.message.id, 
+            InputMediaPhoto(random.choice(PICS))
+        )
+        await query.message.edit_text(
+            text=script.HELP_TXT.format(query.from_user.mention, temp.U_NAME, temp.B_NAME),
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+
+    elif query.data == "features":
+        buttons = [[
+            InlineKeyboardButton('ᴛᴇʟᴇɢʀᴀᴘʜ', callback_data='tele'),
+            InlineKeyboardButton('ғᴏɴᴛ', callback_data='font'),
+            InlineKeyboardButton('ꜱᴛɪᴄᴋᴇʀ ɪᴅ', callback_data='sticker')
+        ], [
+            InlineKeyboardButton('ᴄᴏᴜɴᴛʀʏ', callback_data='country'),
+            InlineKeyboardButton('ᴛʀᴀɴꜱʟᴀᴛᴇ', callback_data='translate'),
+            InlineKeyboardButton('ᴡᴇᴀᴛʜᴇʀ', callback_data='weather')
+        ], [
+            InlineKeyboardButton('Interstellar', callback_data='spacespeed'),
+            InlineKeyboardButton('ᴄᴏᴠɪᴅ', callback_data='corona'), 
+            InlineKeyboardButton('sᴛʀᴇᴀᴍ', callback_data='streamx')
+        ], [
+            InlineKeyboardButton('◁ʙᴀᴄᴋ', callback_data='help'),
+            InlineKeyboardButton('• ʜᴏᴍᴇ •', callback_data='start')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
-            text=script.HELP_TXT,
+            text=script.FEATURES_TXT.format(query.from_user.mention),
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+
+    elif query.data == "group_info":
+        buttons = [[
+            InlineKeyboardButton('⚡ Jᴏɪɴ ᴏᴜʀ ᴛᴇʟᴇɢʀᴀᴍ ᴄᴏᴍᴍᴜɴɪᴛʏ ', url="https://t.me/Xeonflix")
+       ],[
+            InlineKeyboardButton('📮 Mᴏᴠɪᴇꜱ ', url="t.me/MovieNationSpot"),
+            InlineKeyboardButton('📮 sᴇʀɪᴇs ', url="t.me/SeriesNationSpot")
+       ],[
+            InlineKeyboardButton('• ʙᴀᴄᴋ •', callback_data='start')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.CHANNELS.format(query.from_user.mention),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
@@ -1527,20 +1581,43 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "about":
         buttons = [[
             InlineKeyboardButton('‼️ ᴅɪꜱᴄʟᴀɪᴍᴇʀ ‼️', callback_data='disclaimer'),
-            InlineKeyboardButton ('🪔 sᴏᴜʀᴄᴇ', callback_data='source'),
-        ],[
-            InlineKeyboardButton('ᴅᴏɴᴀᴛɪᴏɴ 💰', callback_data='donation'),
-        ],[
-            InlineKeyboardButton('⇋ ʙᴀᴄᴋ ᴛᴏ ʜᴏᴍᴇ ⇋', callback_data='start')
+        ], [
+            InlineKeyboardButton('• ᴏᴡɴᴇʀ •', url="tg://settings"),
+            InlineKeyboardButton('• ᴄʀᴇᴅɪᴛs •', callback_data='credit')
+        ], [
+            InlineKeyboardButton('• ᴅᴏɴᴀᴛɪᴏɴ •', callback_data='donation'),
+            InlineKeyboardButton('• ꜱᴜᴘᴘᴏʀᴛ •', callback_data='group_info')
+        ], [
+            InlineKeyboardButton('Hᴏᴍᴇ', callback_data='start'),
+            InlineKeyboardButton('sᴏᴜʀᴄᴇ', callback_data='source')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
+        await client.edit_message_media(
+            query.message.chat.id, 
+            query.message.id, 
+            InputMediaPhoto(random.choice(PICS))
+        )
         await query.message.edit_text(
-            text=script.ABOUT_TXT.format(temp.U_NAME, temp.B_NAME, OWNER_LNK),
+            text=script.ABOUT_TXT.format(query.from_user.mention, temp.U_NAME, temp.B_NAME),
             reply_markup=reply_markup,
-            disable_web_page_preview=True,
             parse_mode=enums.ParseMode.HTML
         )
 
+    elif query.data == "credit":
+        buttons = [[
+            InlineKeyboardButton('ᴄʀᴇᴅɪᴛs 📜', callback_data='mycredit'),
+            InlineKeyboardButton('⇋ ʙᴀᴄᴋ ⇋', callback_data='start')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.CREDIT_INFO,
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+
+    elif query.data == "mycredit":
+        await query.answer("𖤍 ᴍʏ ᴄʀᴇᴅɪᴛꜱ & ɪɴꜰᴏ 𖤍 \n\n⍟ ʙᴀꜱᴇ ᴄᴏᴅᴇ ɴʙʙᴏᴛᴢ & ᴅʀᴇᴀᴍxʙᴏᴛᴢ\n⍟ ᴇxᴛʀᴀ ꜰᴇᴀᴛᴜʀᴇꜱ xᴇᴏɴ\n⍟ ᴛʜᴀɴᴋꜱ ᴛᴏ ᴊɪꜱꜱʜᴜʙᴏᴛꜱ\n\nᴠ4.4 [sᴛᴀʙʟᴇ] """, show_alert=True)
+ 
     elif query.data == "give_trial":
         try:
             user_id = query.from_user.id
