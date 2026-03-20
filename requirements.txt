@@ -13,7 +13,6 @@ telegraph
 pymediainfo-pyrofork
 
 # Other tools
-opencv-python-headless==4.8.1.78
 python-dotenv==0.21.1
 PyLeaves==1.0.2
 humanize
@@ -26,7 +25,6 @@ wget
 aiofiles
 dnspython==2.7.0
 python-decouple
-ffmpeg-python==0.2.0
 jinja2
 apscheduler
 pyshorteners
