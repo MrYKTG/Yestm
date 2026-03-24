@@ -1,10 +1,112 @@
-<h1 align="center"><b>🚩 ᴊᴀɪ ꜱʜʀɪ ʀᴀᴍ 🚩</b></h1>
+Yestm-DreamXBotz/
+├── .python-version
+├── Dockerfile
+├── LICENSE
+├── Procfile
+├── README.md
+├── Script.py
+├── app.json
+├── bot.py
+├── docker-compose.yml
+├── heroku.yml
+├── info.py
+├── logging.conf
+├── requirements.txt
+├── utils.py
 
-<p align="center">
-  <img src="https://github.com/DreamXBotz/Pics/blob/main/dreamxbotz.jpg" alt="DreamxBotz Logo">
-</p>
+├── database/
+│   ├── config_db.py
+│   ├── ia_filterdb.py
+│   ├── refer.py
+│   └── users_chats_db.py
 
-<h1 align="center">𝓓𝓻𝓮𝓪𝓶𝔁𝓑𝓸𝓽𝔃</h1>
+├── dreamxbotz/
+│   ├── Bot/
+│   │   ├── __init__.py
+│   │   └── clients.py
+│   │
+│   ├── server/
+│   │   └── exceptions.py
+│   │
+│   ├── template/
+│   │   ├── dl.html
+│   │   ├── favicon.ico
+│   │   └── req.html
+│   │
+│   ├── util/
+│   │   ├── config_parser.py
+│   │   ├── custom_dl.py
+│   │   ├── file_properties.py
+│   │   ├── file_size.py
+│   │   ├── human_readable.py
+│   │   ├── keepalive.py
+│   │   ├── render_template.py
+│   │   └── time_format.py
+│   │
+│   └── zzint/
+│       └── __init__.py
+
+├── plugins/
+│   ├── Premium.py
+│   ├── __init__.py
+│   ├── banned.py
+│   ├── broadcast.py
+│   ├── channel.py
+│   ├── commands.py
+│   ├── extract.py
+│   ├── files_delete.py
+│   ├── index.py
+│   ├── join_req.py
+│   ├── misc.py
+│   ├── monkey_patch.py
+│   ├── p_ttishow.py
+│   ├── pmfilter.py
+│   ├── post_handler.py
+│   ├── route.py
+│
+│   ├── Dreamxfutures/
+│   │   ├── Imdbposter.py
+│   │   ├── Redeem.py
+│   │   ├── check_alive.py
+│   │   ├── font.py
+│   │   ├── fotnt_string.py
+│   │   └── telegraph.py
+│
+│   └── Extraxoen/
+│       ├── country.py
+│       ├── covid.py
+│       ├── extra.txt
+│       ├── spacedistance.py
+│       ├── sticker.py
+│       ├── translate.py
+│       ├── traveldistance.py
+│       └── weather.py
+
+🔥 Important Observations (Real Repo Insights)
+✅ 1. Not a Simple Bot — It's Advanced
+This is more complex than typical DreamXBotz bots:
+Has web server templates (template/)
+Has custom bot client system (dreamxbotz/Bot/clients.py)
+Has plugin submodules (Dreamxfutures, Extraxoen)
+✅ 2. Key Core Files
+bot.py → main entry point
+Script.py → likely config/messages/constants
+info.py → environment & variables
+utils.py → helper functions
+✅ 3. Database System
+ia_filterdb.py → main auto-filter engine
+users_chats_db.py → users + groups tracking
+refer.py → referral system
+config_db.py → bot settings
+✅ 4. Plugin System (Very Powerful)
+Main features inside plugins/:
+pmfilter.py → auto filter (main feature)
+index.py → file indexing
+broadcast.py → message broadcast
+join_req.py → join request system
+route.py → web routes
+extract.py → file extraction
+files_delete.py → delete files
 
 ---
 
