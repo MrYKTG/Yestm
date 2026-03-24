@@ -1,3 +1,6 @@
+## 📁 Project Structure
+
+```text
 Yestm-DreamXBotz/
 ├── .python-version
 ├── Dockerfile
@@ -13,13 +16,13 @@ Yestm-DreamXBotz/
 ├── logging.conf
 ├── requirements.txt
 ├── utils.py
-
+│
 ├── database/
 │   ├── config_db.py
 │   ├── ia_filterdb.py
 │   ├── refer.py
 │   └── users_chats_db.py
-
+│
 ├── dreamxbotz/
 │   ├── Bot/
 │   │   ├── __init__.py
@@ -45,7 +48,7 @@ Yestm-DreamXBotz/
 │   │
 │   └── zzint/
 │       └── __init__.py
-
+│
 ├── plugins/
 │   ├── Premium.py
 │   ├── __init__.py
@@ -63,7 +66,7 @@ Yestm-DreamXBotz/
 │   ├── pmfilter.py
 │   ├── post_handler.py
 │   ├── route.py
-│
+│   │
 │   ├── Dreamxfutures/
 │   │   ├── Imdbposter.py
 │   │   ├── Redeem.py
@@ -71,7 +74,7 @@ Yestm-DreamXBotz/
 │   │   ├── font.py
 │   │   ├── fotnt_string.py
 │   │   └── telegraph.py
-│
+│   │
 │   └── Extraxoen/
 │       ├── country.py
 │       ├── covid.py
@@ -81,32 +84,7 @@ Yestm-DreamXBotz/
 │       ├── translate.py
 │       ├── traveldistance.py
 │       └── weather.py
-
-🔥 Important Observations (Real Repo Insights)
-✅ 1. Not a Simple Bot — It's Advanced
-This is more complex than typical DreamXBotz bots:
-Has web server templates (template/)
-Has custom bot client system (dreamxbotz/Bot/clients.py)
-Has plugin submodules (Dreamxfutures, Extraxoen)
-✅ 2. Key Core Files
-bot.py → main entry point
-Script.py → likely config/messages/constants
-info.py → environment & variables
-utils.py → helper functions
-✅ 3. Database System
-ia_filterdb.py → main auto-filter engine
-users_chats_db.py → users + groups tracking
-refer.py → referral system
-config_db.py → bot settings
-✅ 4. Plugin System (Very Powerful)
-Main features inside plugins/:
-pmfilter.py → auto filter (main feature)
-index.py → file indexing
-broadcast.py → message broadcast
-join_req.py → join request system
-route.py → web routes
-extract.py → file extraction
-files_delete.py → delete files
+```
 
 ---
 
