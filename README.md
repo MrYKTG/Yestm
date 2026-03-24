@@ -89,6 +89,7 @@ Yestm-DreamXBotz/
 ---
 
 ## 👤 Owner
+FQDN mr-rofessor-yedhukrishnanu2001.koyeb.app
 
 [![Contact Developer](https://img.shields.io/static/v1?label=Contact+Developer&message=On+Telegram&color=critical)](https://t.me/Deendayal_Support_Group)
 
