@@ -47,7 +47,7 @@ Yestm-DreamXBotz/
 │   │   └── time_format.py
 │   │
 │   └── zzint/
-│       └── __init__.py
+│       └── zzint__init__.py
 │
 ├── plugins/
 │   ├── Premium.py
