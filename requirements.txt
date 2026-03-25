@@ -8,24 +8,15 @@ requests
 bs4
 shortzy
 pytz
-aiohttp
-telegraph
-pymediainfo-pyrofork
-
-# Other tools
 python-dotenv==0.21.1
 PyLeaves==1.0.2
 humanize
 Pillow
 psutil
-numpy
 wheel
-ujson
-wget
 aiofiles
 dnspython==2.7.0
 python-decouple
-jinja2
 apscheduler
 pyshorteners
 colorama
@@ -33,9 +24,4 @@ fuzzywuzzy
 python-Levenshtein==0.27.1
 beautifulsoup4==4.12.3
 num2words
-telegraph==2.2.0
 countryinfo
-
-# Git-based Packages
-https://github.com/NBBotz/IMDBKit/archive/refs/heads/main.zip
-git+https://github.com/DreamXBotz/cinemagoer
