@@ -56,7 +56,7 @@ STAR_PREMIUM_PLANS = {
     75: "60day",
 }
 
-DATABASE_URI = environ.get('DATABASE_URI', "")
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://AutoFilterXeonBot1:AutoFilterXeonBot1@cluster0.fuiwwpc.mongodb.net/?retryWrites=true&w=majority")
 DATABASE_NAME = environ.get('DATABASE_NAME', "AUTOFILTER")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'AUTOFILTER')
 MULTIPLE_DB = is_enabled(os.environ.get('MULTIPLE_DB', "False"), False)
