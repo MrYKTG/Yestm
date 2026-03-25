@@ -25,7 +25,7 @@ Yestm-DreamXBotz/
 │
 ├── dreamxbotz/
 │   ├── Bot/
-│   │   ├── __init__.py
+│   │   ├── bot__init__.py
 │   │   └── clients.py
 │   │
 │   ├── server/
