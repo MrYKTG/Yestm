@@ -14,9 +14,9 @@ def is_enabled(value, default):
         return default
 
 SESSION = environ.get('SESSION', 'dreamxbotz_search')
-API_ID = int(environ.get('API_ID', ''))
+API_ID = int(environ.get('API_ID', '123456'))
 API_HASH = environ.get('API_HASH', '')
-BOT_TOKEN = environ.get('BOT_TOKEN', "")
+BOT_TOKEN = environ.get('BOT_TOKEN', '')
 
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
 USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', True))
@@ -56,11 +56,14 @@ STAR_PREMIUM_PLANS = {
     75: "60day",
 }
 
-DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://AutoFilterXeonBot1:AutoFilterXeonBot1@cluster0.fuiwwpc.mongodb.net/?retryWrites=true&w=majority")
-DATABASE_NAME = environ.get('DATABASE_NAME', "AUTOFILTER")
+# ============================
+# MongoDB Configuration - PUT YOUR MONGODB URI HERE
+# ============================
+DATABASE_URI = "mongodb+srv://AutoFilterXeonBot1:AutoFilterXeonBot1@cluster0.fuiwwpc.mongodb.net/?retryWrites=true&w=majority"
+DATABASE_NAME = "AUTOFILTER"
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'AUTOFILTER')
 MULTIPLE_DB = is_enabled(os.environ.get('MULTIPLE_DB', "False"), False)
-DATABASE_URI2 = environ.get('DATABASE_URI2', "")
+DATABASE_URI2 = environ.get('DATABASE_URI2', '')
 
 MOVIE_UPDATE_NOTIFICATION = bool(environ.get('MOVIE_UPDATE_NOTIFICATION', False))
 MOVIE_UPDATE_CHANNEL = int(environ.get('MOVIE_UPDATE_CHANNEL', '-100'))
@@ -123,9 +126,9 @@ PM_SEARCH = bool(environ.get('PM_SEARCH', True))
 EMOJI_MODE = bool(environ.get('EMOJI_MODE', True))
 BUTTON_MODE = is_enabled((environ.get('BUTTON_MODE', "False")), False)
 
-# Streaming completely removed
-STREAM_MODE = False
-PREMIUM_STREAM_MODE = False
+
+# Web server URL (not used anymore but kept to avoid import errors)
+URL = "https://t.me/"
 
 AUTH_REQ_CHANNELS = [int(ch) for ch in auth_req_channels.split() if ch and id_pattern.match(ch)] 
 AUTH_CHANNELS = [int(ch) for ch in auth_channels.split() if ch and id_pattern.match(ch)]
