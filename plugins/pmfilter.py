@@ -5,7 +5,6 @@ from dreamxbotz.util.file_properties import get_name, get_hash
 from urllib.parse import quote_plus
 import logging
 from database.ia_filterdb import Media, Media2, get_file_details, get_search_results, get_bad_files
-from database.config_db import mdb
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid, ChatAdminRequired, UserNotParticipant
 from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaPhoto, WebAppInfo
@@ -19,6 +18,7 @@ import re
 import math
 import random
 import pytz
+#from database.config_db import mdb
 from datetime import datetime, timedelta
 lock = asyncio.Lock()
 
@@ -46,7 +46,6 @@ async def give_filter(client, message):
         except Exception:
             await message.react(emoji="⚡️")
             pass
-    await mdb.update_top_messages(message.from_user.id, message.text)
     if message.chat.id != SUPPORT_CHAT_ID:
         settings = await get_settings(message.chat.id)
         try:
@@ -1392,58 +1391,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             )
         else:
             await query.answer("Yᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴘᴇʀᴍɪssɪᴏɴ ᴛᴏ sᴇᴇ ᴛʜɪꜱ ❌", show_alert=True)
-
-    elif DreamxData.startswith("generate_stream_link"):
-        _, file_id = DreamxData.split(":")
-        try:
-            user_id = query.from_user.id
-            username = query.from_user.mention
-            log_msg = await client.send_cached_media(chat_id=BIN_CHANNEL, file_id=file_id,)
-            fileName = {quote_plus(get_name(log_msg))}
-            dreamx_stream = f"{URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
-            dreamx_download = f"{URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
-            await query.answer(MSG_ALRT)
-            await asyncio.sleep(1)
-            await log_msg.reply_text(
-                text=f"•• ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ꜰᴏʀ ɪᴅ #{user_id} \n•• ᴜꜱᴇʀɴᴀᴍᴇ : {username} \n\n•• ᖴᎥᒪᗴ Nᗩᗰᗴ : {fileName}",
-                quote=True,
-                disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🚀 ꜰᴀꜱᴛ ᴅᴏᴡɴʟᴏᴀᴅ 🚀", url=dreamx_download),  # we download Link
-                                                    InlineKeyboardButton('🖥️ ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ 🖥️', url=dreamx_stream)]])  # web stream Link
-            )
-            dreamcinezone = await query.edit_message_reply_markup(
-                reply_markup=InlineKeyboardMarkup([
-                    [
-                        InlineKeyboardButton("🚀 ꜰᴀꜱᴛ ᴅᴏᴡɴʟᴏᴀᴅ 🚀", url=dreamx_download),
-                        InlineKeyboardButton('🖥️ ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ 🖥️', url=dreamx_stream)
-                    ],
-                    [
-                        InlineKeyboardButton('📌 ᴊᴏɪɴ ᴜᴘᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ 📌', url=UPDATE_CHNL_LNK)
-                    ]
-                ])
-            )
-            await asyncio.sleep(DELETE_TIME)
-            await dreamcinezone.delete()
-            return
-        except Exception as e:
-            print(e)
-            await query.answer(f"⚠️ SOMETHING WENT WRONG STREAM LINK  \n\n{e}", show_alert=True)
-            return
-
-
-    elif query.data == "prestream":
-        await query.answer(text=script.PRE_STREAM_ALERT, show_alert=True)
-        dreamcinezone = await client.send_photo(
-            chat_id=query.message.chat.id,
-            photo="https://i.ibb.co/whf8xF7j/photo-2025-07-26-10-42-46-7531339305176793100.jpg",
-            caption=script.PRE_STREAM,
-            reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton("🚀 Buy Premium 🚀", callback_data="premium_info")]
-            ])
-        )
-        await asyncio.sleep(DELETE_TIME)
-        await dreamcinezone.delete()
-
 
     elif query.data == "pagesn1":
         await query.answer(text=script.PAGE_TXT, show_alert=True)
