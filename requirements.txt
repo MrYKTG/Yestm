@@ -10,19 +10,11 @@ shortzy
 pytz
 aiohttp
 telegraph
-pymediainfo-pyrofork
-
-# Other tools
+Pillow
+psutil
 python-dotenv==0.21.1
 PyLeaves==1.0.2
 humanize
-Pillow
-psutil
-numpy
-wheel
-ujson
-wget
-aiofiles
 dnspython==2.7.0
 python-decouple
 jinja2
