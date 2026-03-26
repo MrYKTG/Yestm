@@ -1,5 +1,4 @@
 from aiohttp import web
-from .route import routes
 from asyncio import sleep 
 from datetime import datetime
 from database.users_chats_db import db
@@ -12,8 +11,9 @@ logging.basicConfig(level=logging.INFO)
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
 
 async def web_server():
-    web_app = web.Application(client_max_size=30000000)
-    web_app.add_routes(routes)
+    """Minimal web server for keepalive only."""
+    web_app = web.Application()
+    web_app.router.add_get('/', lambda r: web.Response(text='OK'))
     return web_app
 
 async def check_expired_premium(client):
@@ -44,5 +44,4 @@ async def keep_alive():
                     if resp.status != 200:
                         logging.warning(f"⚠️ Ping Error! Status: {resp.status}")
             except Exception as e:
-                logging.error(f"❌ Ping Failed: {e}")           
-
+                logging.error(f"❌ Ping Failed: {e}")
