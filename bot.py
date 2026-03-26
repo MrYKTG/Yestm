@@ -15,7 +15,7 @@ from database.users_chats_db import db
 from info import *
 from utils import temp
 from Script import script
-from plugins import web_server, check_expired_premium, keep_alive
+from plugins import check_expired_premium, keep_alive
 from dreamxbotz.Bot import dreamxbotz
 from dreamxbotz.util.keepalive import ping_server
 from dreamxbotz.Bot.clients import initialize_clients
@@ -81,6 +81,12 @@ def dreamxbotz_plugins_handler(app, plugins_dir: str | Path = "plugins", package
         logging.info("No Handlers In Group 0; Nothing To Regroup.")
 
     return loaded_plugins
+
+async def web_server():
+    """Minimal web server for keepalive only."""
+    web_app = web.Application()
+    web_app.router.add_get('/', lambda r: web.Response(text='OK'))
+    return web_app
 
 async def dreamxbotz_start():
     print('\n\nInitalizing DreamxBotz')
