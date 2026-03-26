@@ -1,14 +1,95 @@
-<h1 align="center"><b>🚩 ᴊᴀɪ ꜱʜʀɪ ʀᴀᴍ 🚩</b></h1>
+## 📁 Project Structure
 
-<p align="center">
-  <img src="https://github.com/DreamXBotz/Pics/blob/main/dreamxbotz.jpg" alt="DreamxBotz Logo">
-</p>
-
-<h1 align="center">𝓓𝓻𝓮𝓪𝓶𝔁𝓑𝓸𝓽𝔃</h1>
+```text
+Yestm-DreamXBotz/
+├── .python-version
+├── Dockerfile
+├── LICENSE
+├── Procfile
+├── README.md
+├── Script.py
+├── app.json
+├── bot.py
+├── docker-compose.yml
+├── heroku.yml
+├── info.py
+├── logging.conf
+├── requirements.txt
+├── utils.py
+│
+├── database/
+│   ├── config_db.py
+│   ├── ia_filterdb.py
+│   ├── refer.py
+│   └── users_chats_db.py
+│
+├── dreamxbotz/
+│   ├── Bot/
+│   │   ├── bot__init__.py
+│   │   └── clients.py
+│   │
+│   ├── server/
+│   │   └── exceptions.py
+│   │
+│   ├── template/
+│   │   ├── dl.html
+│   │   ├── favicon.ico
+│   │   └── req.html
+│   │
+│   ├── util/
+│   │   ├── config_parser.py
+│   │   ├── custom_dl.py
+│   │   ├── file_properties.py
+│   │   ├── file_size.py
+│   │   ├── human_readable.py
+│   │   ├── keepalive.py
+│   │   ├── render_template.py
+│   │   └── time_format.py
+│   │
+│   └── zzint/
+│       └── zzint__init__.py
+│
+├── plugins/
+│   ├── Premium.py
+│   ├── __init__.py
+│   ├── banned.py
+│   ├── broadcast.py
+│   ├── channel.py
+│   ├── commands.py
+│   ├── extract.py
+│   ├── files_delete.py
+│   ├── index.py
+│   ├── join_req.py
+│   ├── misc.py
+│   ├── monkey_patch.py
+│   ├── p_ttishow.py
+│   ├── pmfilter.py
+│   ├── post_handler.py
+│   ├── route.py
+│   │
+│   ├── Dreamxfutures/
+│   │   ├── Imdbposter.py
+│   │   ├── Redeem.py
+│   │   ├── check_alive.py
+│   │   ├── font.py
+│   │   ├── fotnt_string.py
+│   │   └── telegraph.py
+│   │
+│   └── Extraxoen/
+│       ├── country.py
+│       ├── covid.py
+│       ├── extra.txt
+│       ├── spacedistance.py
+│       ├── sticker.py
+│       ├── translate.py
+│       ├── traveldistance.py
+│       └── weather.py
+```
 
 ---
 
 ## 👤 Owner
+FQDN mr-rofessor-yedhukrishnanu2001.koyeb.app
 
 [![Contact Developer](https://img.shields.io/static/v1?label=Contact+Developer&message=On+Telegram&color=critical)](https://t.me/Deendayal_Support_Group)
 
