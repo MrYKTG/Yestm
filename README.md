@@ -51,7 +51,7 @@ Yestm-DreamXBotz/
 │
 ├── plugins/
 │   ├── Premium.py
-│   ├── __init__.py
+│   ├── plugins__init__.py
 │   ├── banned.py
 │   ├── broadcast.py
 │   ├── channel.py
@@ -65,7 +65,7 @@ Yestm-DreamXBotz/
 │   ├── p_ttishow.py
 │   ├── pmfilter.py
 │   ├── post_handler.py
-│   ├── route.py
+│   ├── pluginsroute.py
 │   │
 │   ├── Dreamxfutures/
 │   │   ├── Imdbposter.py
